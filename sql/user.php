@@ -12,3 +12,15 @@ function saveUser($username, $password) {
 
     return $result;
 }
+
+function loginUser($username, $password) {
+    global $pdo;
+    $statement = $pdo->prepare('SELECT * FROM user WHERE username = :username AND password = :password');
+    $statement->bindParam(':username', $username);
+    $statement->bindParam(':password', $password);
+    $statement->execute();
+
+    $result = $statement->fetchAll();
+
+    return $result;
+}
