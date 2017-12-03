@@ -1,12 +1,13 @@
 <?php
 
 require_once __DIR__.'/../config.php';
+require_once __DIR__.'/../model/User.php';
 
-function saveUser($username, $password) {
+function saveUser($user) {
     global $pdo;
     $statement = $pdo->prepare('INSERT INTO user (username, password) values(:username, :password)');
-    $statement->bindParam(':username', $username);
-    $statement->bindParam(':password', $password);
+    $statement->bindParam(':username', $user->getUsername());
+    $statement->bindParam(':password', $user->getPassword());
 
     $result = $statement->execute();
 
@@ -20,7 +21,7 @@ function loginUser($username, $password) {
     $statement->bindParam(':password', $password);
     $statement->execute();
 
-    $result = $statement->fetchAll();
+    $user = $statement->fetchObject(User::class);
 
-    return $result;
+    return $user;
 }

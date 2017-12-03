@@ -8,7 +8,7 @@
     <div>
         <?php if (isset($_SESSION['username'])) { ?>
             <p>Selamat Datang, <?php echo $_SESSION['username']; ?> </p>
-            <a href="">Logout</a>
+            <a href="http://localhost.dev:8081/controller/user/logout.php">Logout</a>
         <?php } else { ?>
             <a href="http://localhost.dev:8081/controller/user/register.php">Register</a>
             <a href="http://localhost.dev:8081/controller/user/login.php">Login</a>

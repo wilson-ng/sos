@@ -8,7 +8,7 @@ if (isset($_POST['buttonSubmit'])) {
 
     if ($user = loginUser($username, $password)) {
         // ini akan dijalankan setelah login sukses.
-        $_SESSION['username'] = $user[0]['username'];
+        $_SESSION['username'] = $user->getUsername();
         header('Location: http://localhost.dev:8081/');
     }
 }
