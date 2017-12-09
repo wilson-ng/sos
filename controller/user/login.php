@@ -9,7 +9,12 @@ if (isset($_POST['buttonSubmit'])) {
     if ($user = loginUser($username, $password)) {
         // ini akan dijalankan setelah login sukses.
         $_SESSION['username'] = $user->getUsername();
-        header('Location: http://localhost.dev:8081/');
+
+        if ($user->isCustomer()) {
+            header('Location: http://localhost.dev:8081/');
+        } else {
+            header('Location: http://localhost.dev:8081/controller/dashboard/index.php');
+        }
     }
 }
 

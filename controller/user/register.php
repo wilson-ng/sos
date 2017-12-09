@@ -7,6 +7,7 @@ if (isset($_POST['buttonSubmit'])) {
     $user = new User();
     $user->setUsername($_POST['username']);
     $user->setPassword($_POST['password']);
+    $user->setType('customer');
 
     if (saveUser($user)) {
         header('Location: http://localhost.dev:8081/');

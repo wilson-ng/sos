@@ -5,9 +5,10 @@ require_once __DIR__.'/../model/User.php';
 
 function saveUser($user) {
     global $pdo;
-    $statement = $pdo->prepare('INSERT INTO user (username, password) values(:username, :password)');
+    $statement = $pdo->prepare('INSERT INTO user (username, password, type) values(:username, :password, :type)');
     $statement->bindParam(':username', $user->getUsername());
     $statement->bindParam(':password', $user->getPassword());
+    $statement->bindParam(':type', $user->getType());
 
     $result = $statement->execute();
 
