@@ -11,9 +11,9 @@ if (isset($_POST['buttonSubmit'])) {
         $_SESSION['username'] = $user->getUsername();
 
         if ($user->isCustomer()) {
-            header('Location: http://localhost.dev:8081/');
+            header('Location: http://sos.localhost:8081/');
         } else {
-            header('Location: http://localhost.dev:8081/controller/dashboard/index.php');
+            header('Location: http://sos.localhost:8081/controller/dashboard/index.php');
         }
     }
 }
