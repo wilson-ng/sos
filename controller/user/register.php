@@ -10,7 +10,7 @@ if (isset($_POST['buttonSubmit'])) {
     $user->setType('customer');
 
     if (saveUser($user)) {
-        header('Location: http://localhost.dev:8081/');
+        header('Location: '.$host);
     }
 }
 

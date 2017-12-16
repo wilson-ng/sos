@@ -13,13 +13,13 @@
     <div>
         <ul>
             <li>
-                <a href="http://localhost.dev:8081/controller/dashboard/index.php">Home</a>
+                <a href="<?php echo $host; ?>controller/dashboard/index.php">Home</a>
             </li>
             <li>
-                <a href="">Product</a>
+                <a href="<?php echo $host; ?>controller/dashboard/product/list.php">Product</a>
             </li>
             <li>
-                <a href="http://localhost.dev:8081/controller/user/logout.php">Log out</a>
+                <a href="<?php echo $host; ?>controller/user/logout.php">Log out</a>
             </li>
         </ul>
     </div>
