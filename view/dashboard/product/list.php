@@ -30,7 +30,7 @@
             <?php foreach ($products as $key => $product) { ?>
             <tr>
                 <td><?php echo $key+1; ?></td>
-                <td><img src="<?php echo 'http://sos.localhost:8081/'.$product->getImage(); ?>" alt="" width="5%"></td>
+                <td><img src="<?php echo 'http://sos.localhost:8081/'.$product->getImage(); ?>" alt="" width="70%"></td>
                 <td><?php echo $product->getName(); ?></td>
                 <td><?php echo $product->getQuantity(); ?></td>
                 <td><?php echo $product->getPrice(); ?></td>
