@@ -2,10 +2,16 @@
 
 class Product
 {
+    private $id;
     private $name;
     private $price;
     private $quantity;
     private $image;
+
+    public function getId()
+    {
+        return $this->id;
+    }
 
     public function setName($name)
     {

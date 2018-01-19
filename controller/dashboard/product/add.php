@@ -1,24 +1,26 @@
 <?php
 
 require_once __DIR__.'/../../../config.php';
-require_once __DIR__.'/../../../sql/product.php';
 require_once __DIR__.'/../../../model/Product.php';
+require_once __DIR__.'/../../../sql/product.php';
 
-if (!empty($_FILES['image'])) {
+if (isset($_POST['saveProduct']) && !empty($_FILES['image'])) {
     $productImageFolder = 'uploads/product/';
-    $productImageLocation = $productImageFolder.basename($_FILES['image']['name']);
+    $productImageName = basename($_FILES['image']['name']);
+    $productImageLocation = $productImageFolder.$productImageName;
+    $productImagePath = __DIR__.'/../../../'.$productImageLocation;
 
-    if (move_uploaded_file($_FILES['image']['tmp_name'], __DIR__.'/../../../'.$productImageLocation)) {
+    if (move_uploaded_file($_FILES['image']['tmp_name'], $productImagePath)) {
         $product = new Product();
+        $product->setImage($productImageLocation);
         $product->setName($_POST['name']);
         $product->setPrice($_POST['price']);
         $product->setQuantity($_POST['quantity']);
-        $product->setImage($productImageLocation);
 
         if (saveProduct($product)) {
-            header('Location: '.$host.'controller/dashboard/product/list.php');
+            header('Location: http://sos.localhost:8081/controller/dashboard/product/list.php');
         } else {
-            unlink(__DIR__.'/../../../'.$productImageLocation);
+            unlink($productImagePath);
         }
     }
 }
